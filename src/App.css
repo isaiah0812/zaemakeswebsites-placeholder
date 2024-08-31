@@ -1,1 +1,60 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  --margin-and-offset: 2rem;
+  --height-and-width-offset: calc(var(--margin-and-offset) * 2);
+  display: flex;
+  align-items: center;
+  height: calc(100vh - var(--height-and-width-offset));
+  width: calc(100vw - var(--height-and-width-offset));
+  flex-wrap: nowrap;
+  overflow: hidden;
+  gap: 2rem;
+  padding: var(--margin-and-offset);
+}
+
+#title {
+  font-size: 6rem;
+}
+
+main > * {
+  width: 50%;
+}
+
+.section-button {
+  margin-bottom: 0.5rem;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 1.5em;
+  position: relative;
+  cursor: pointer;
+  padding-bottom: 2px;
+
+  &::after {
+    --offset: 50%;
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: var(--offset);
+    width: 0;
+    height: 100%;
+    border-bottom: 1px solid black;
+    transition: 300ms;
+    transform: translateX(calc(var(--offset) * -1));
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+.section-button:last-child {
+  margin-bottom: 0;
+}
+
 
