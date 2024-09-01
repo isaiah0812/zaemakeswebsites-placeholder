@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
+import projects from './projects.json';
 
 function BackButton({ onClick }) {
   return (
@@ -12,7 +13,16 @@ function BackButton({ onClick }) {
 }
 
 function Projects() {
-  return <div>Projects</div>
+  return (
+    <div>
+      {projects.map((project, ndx) => 
+        <>
+          <button className="section-button">{project.title}</button>
+          {ndx !== projects.length - 1 && <br />}
+        </>
+      )}
+    </div>
+  )
 }
 
 function Contact() {
@@ -60,12 +70,42 @@ function App() {
     ['Contact', <Contact />]
   ];
 
+  const jobTitles = [
+    'Professional Problem Solver',
+    'Computer Man',
+    'Web Developer',
+    'Rennaisance Man',
+    'Dawg',
+    'Jack of A Few Trades',
+    'Batman',
+    'AI, except Human',
+    'Computer Scientist',
+    'Isaiah Bullard',
+    'Lightning Bender (Technically)'
+  ];
+
+  const [jobTitle, setJobTitle] = useState(0)
+
+  useEffect(() => {
+    const titleScroll = setInterval(() => {
+      setJobTitle(prev => {
+        if (prev === jobTitles.length - 1) {
+          return 0;
+        } else {
+          return prev + 1;
+        }
+      });
+    }, 5000)
+
+    return () => clearInterval(titleScroll);
+  }, []);
+
   return (
     <main>
       <h1 id="title">
         Isaiah Bullard:
         <br />
-        Professional Problem Solver.
+        {jobTitles[jobTitle]}
       </h1>
       <div id="content">
         <div id="menu">
