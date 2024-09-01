@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Isaiah Bullard - Music",
+    "description": "Informational website and online store for musician, Isaiah Bullard.",
+    "demos": ["zaemadethis.gif"],
+    "tasks": [],
+    "role": "",
+    "urls": [["zaemadethis.com (currently in development)", "https://www.zaemadethis.com"]]
+  },
+  {
+    "title": "We$ Clinton / Corey [Arnell]",
+    "description": "Informational website for musician We$ Clinton, a.k.a. Corey [Arnell].",
+    "demos": ["wesclinton.gif"],
+    "tasks": [],
+    "role": "",
+    "urls": [["wesclinton.com", "https://www.wesclinton.com"], ["coreyarnell.com", "https://www.coreyarnell.com"]]
+  },
+  {
+    "title": "St. Phillips Missionary Baptist Church",
+    "description": "Website and online donation platform for St. Phillips Misionary Baptist Church in Austin, Texas.",
+    "demos": ["spmbc.gif"],
+    "tasks": [],
+    "role": "",
+    "urls": [["stphillipsmbchurch.com", "https://www.stphillipsmbchurch.com"]]
+  }
+]
