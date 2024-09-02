@@ -80,3 +80,7 @@ main > * {
   display: flex;
   align-items: center;
 }
+
+.project-title {
+  display: inline-block
+}

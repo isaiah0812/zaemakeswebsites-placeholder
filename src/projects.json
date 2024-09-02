@@ -3,24 +3,37 @@
     "title": "Isaiah Bullard - Music",
     "description": "Informational website and online store for musician, Isaiah Bullard.",
     "demos": ["zaemadethis.gif"],
-    "tasks": [],
-    "role": "",
+    "tasks": [
+      "5 main pages written in React, with dynamic project pages and components that contained information about musical projects.",
+      "Maintained cloud infrastructure and services, including a database, API, and online inventory system.",
+      "Integrated with Square to handle orders and customers.",
+      "Created an interface to process orders (print shipping labels, view order information, and do anything else that orders needed)."
+    ],
     "urls": [["zaemadethis.com (currently in development)", "https://www.zaemadethis.com"]]
   },
   {
     "title": "We$ Clinton / Corey [Arnell]",
     "description": "Informational website for musician We$ Clinton, a.k.a. Corey [Arnell].",
     "demos": ["wesclinton.gif"],
-    "tasks": [],
-    "role": "",
-    "urls": [["wesclinton.com", "https://www.wesclinton.com"], ["coreyarnell.com", "https://www.coreyarnell.com"]]
+    "tasks": [
+      "3 pages written in React.",
+      "Created two different themes to display the site, with two different sets of data and text, that could be seamlessly switched with the click of a button.",
+      "Gave a live feed of social media accounts.",
+      "Set up infrastructure to implement merchandise later."
+    ],
+    "urls": [["wesclinton.com", "https://www.wesclinton.com"]]
   },
   {
     "title": "St. Phillips Missionary Baptist Church",
     "description": "Website and online donation platform for St. Phillips Misionary Baptist Church in Austin, Texas.",
     "demos": ["spmbc.gif"],
-    "tasks": [],
-    "role": "",
+    "tasks": [
+      "6 pages, written in React.",
+      "Used a combination of static and dynamic data, where dynamic data could be updated by simply refreshing the page.",
+      "Managed the cloud infrastructure, which included a database, API, and two front-ends.",
+      "Created an administration site that allows the owners to change dynamic information in the site (events and photos).",
+      "Included a platform to accept donations (offering) with Venmo and Cash App, switching platforms based on the type of donation (offering)."
+    ],
     "urls": [["stphillipsmbchurch.com", "https://www.stphillipsmbchurch.com"]]
   }
 ]

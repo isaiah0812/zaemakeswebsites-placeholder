@@ -12,13 +12,35 @@ function BackButton({ onClick }) {
   )
 }
 
-function Projects() {
+function Project({ project }) {
   return (
     <div>
+      <h2 className="project-title">{project.title}</h2> | <span>{project.description}</span>
+      <br></br>
+      {project.urls.map((url, ndx) => (
+        <>
+          <a href={url[1]}>{url[0]}</a>{ndx !== project.urls.length - 1 && " | "}
+        </>
+      ))}
+      <ul>
+        {project.tasks.map(task => <li>{task}</li>)}
+      </ul>
+      {project.demos.map(demo => <img src={demo} />)}
+    </div>
+  )
+}
+
+function Projects() {
+  const [selected, setSelected] = useState(undefined);
+
+  return (
+    <div>
+      {selected && <BackButton onClick={() => setSelected(undefined)} />}
       {projects.map((project, ndx) => 
         <>
-          <button className="section-button">{project.title}</button>
-          {ndx !== projects.length - 1 && <br />}
+          {(!selected) && <button className="section-button" onClick={() => setSelected(project.title)}>{project.title}</button>}
+          {(ndx !== projects.length - 1 && !selected) && <br />}
+          {(selected === project.title) && <Project project={project} />}
         </>
       )}
     </div>
