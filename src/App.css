@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  --off-white: #f5f4f0;
 }
 
 main {
@@ -14,6 +15,8 @@ main {
   overflow: hidden;
   gap: 2rem;
   padding: var(--margin-and-offset);
+  background-color: #010110;
+  color: var(--off-white);
 }
 
 #title {
@@ -32,6 +35,7 @@ main > * {
   font-size: 1.5em;
   position: relative;
   cursor: pointer;
+  color: var(--off-white);
 
   &::after {
     --offset: 50%;
@@ -64,6 +68,7 @@ main > * {
   border: none;
   cursor: pointer;
   font-size: var(--font-size);
+  color: var(--off-white);
   
   /* &::before {
     content: '';
@@ -83,4 +88,16 @@ main > * {
 
 .project-title {
   display: inline-block
+}
+
+.chevron {
+  --height-and-width: 1.5rem;
+  transform: rotate(90deg);
+  height: var(--height-and-width);
+  width: var(--height-and-width);
+  margin: 0 1.5rem;
+}
+
+.chevron.flipped {
+  transform: rotate(-90deg);
 }

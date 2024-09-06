@@ -2,13 +2,26 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import projects from './projects.json';
 
+const Chevron = ({ flipped, size, margin }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 512 512"
+    fill="#f5f4f0"
+    className={`chevron${flipped ? ' flipped' : ''}`}
+    style={{ height: size, width: size, margin: `0 ${margin}`}}
+  >
+    {/* <!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. */}
+    <path
+      d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z" />
+  </svg>
+)
+
 function BackButton({ onClick }) {
   return (
-    <div>
-      {/* <img id="chevron" src="chevron-up-solid.svg" /> */}
-      <button id="back-button" onClick={onClick}>Back</button>
+    <>
+      <button id="back-button" onClick={onClick}><Chevron flipped size="0.75rem" margin="0.25rem" />Back</button>
       <br />
-    </div>
+    </>
   )
 }
 
@@ -49,7 +62,7 @@ function Projects() {
 
 function Contact() {
   const [ callText, setCallText ] = useState('Call Me!')
-  const [ countDown, setCountDown ] = useState(5);
+  const [ countDown, setCountDown ] = useState(3);
   const [ rolling, setRolling ] = useState(false);
 
   const ra = () => {
@@ -60,7 +73,6 @@ function Contact() {
         if (prev === 0) {
           clearInterval(raTimer);
           setRolling(true);
-          setCallText("I can't have random people calling me.")
           return 0;
         } else {
           setCallText(`I'm so sorry...${prev - 1}`)
@@ -76,10 +88,12 @@ function Contact() {
     <div>
       Email: <a href="mailto:zae@zaemakeswebsites.com">zae@zaemakeswebsites.com</a>
       <br />
-      <button onClick={ra}>{callText}</button>
-      {rolling && (
-        <iframe width="420" height="345" src="http://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" frameborder="0" allowfullscreen></iframe>
-      )}
+      {rolling ? (
+        <>
+          <a href="tel:+15122419507">(512) 241-9507</a>
+          <iframe width="420" height="345" src="http://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" frameborder="0" allowfullscreen></iframe>
+        </>
+      ) : <button onClick={ra}>{callText}</button>}
     </div>
   )
 }
@@ -93,17 +107,19 @@ function App() {
   ];
 
   const jobTitles = [
+    'Software Engineer',
+    'Web Developer',
+    'Computer Scientist',
     'Professional Problem Solver',
     'Computer Man',
-    'Web Developer',
     'Rennaisance Man',
     'Dawg',
     'Jack of A Few Trades',
     'Batman',
     'AI, except Human',
-    'Computer Scientist',
-    'Isaiah Bullard',
-    'Lightning Bender (Technically)'
+    'Vance Refrigeration',
+    'Lightning Bender (Technically)',
+    'Isaiah Bullard'
   ];
 
   const [jobTitle, setJobTitle] = useState(0)
@@ -140,7 +156,12 @@ function App() {
             </>
           )}
         </div>
-        {selected && selected[1]}
+        {selected && (
+          <>
+            <Chevron size="1.5rem" margin="1.5rem" />
+            {selected[1]}
+          </>
+        )}
       </div>
     </main>
   )
