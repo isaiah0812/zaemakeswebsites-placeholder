@@ -46,7 +46,7 @@ main > * {
     left: var(--offset);
     width: 0;
     height: 100%;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--off-white);
     transition: 300ms;
     transform: translateX(calc(var(--offset) * -1));
     padding-bottom: 2px;
@@ -100,4 +100,32 @@ main > * {
 
 .chevron.flipped {
   transform: rotate(-90deg);
+}
+
+.project-divide {
+  width: 5%;
+  margin: 1rem auto;
+}
+
+.project-description {
+  font-style: italic;
+  text-align: center;
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+ul {
+  list-style-position: inside;
+  list-style-type: circle;
+  columns: 2;
+}
+
+li {
+  margin-bottom: 0.5rem;
 }

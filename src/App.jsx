@@ -28,17 +28,18 @@ function BackButton({ onClick }) {
 function Project({ project }) {
   return (
     <div>
-      <h2 className="project-title">{project.title}</h2> | <span>{project.description}</span>
-      <br></br>
-      {project.urls.map((url, ndx) => (
-        <>
+      <div className="project-header"><h2 className="project-title">{project.title}</h2> | {project.urls.map((url, ndx) => (
+        <span>
           <a href={url[1]}>{url[0]}</a>{ndx !== project.urls.length - 1 && " | "}
-        </>
-      ))}
+        </span>
+      ))}</div>
+      <hr className="project-divide" />
+      <p className="project-description">{project.description}</p>
+      <hr className="project-divide" />
       <ul>
         {project.tasks.map(task => <li>{task}</li>)}
       </ul>
-      {project.demos.map(demo => <img src={demo} />)}
+      {project.demos.map((demo, ndx) => <img src={demo} />)}
     </div>
   )
 }
