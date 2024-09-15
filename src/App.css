@@ -2,6 +2,12 @@
   margin: 0;
   padding: 0;
   --off-white: #f5f4f0;
+  --off-white-tint: #939290;
+  --gold: #bc9b18;
+  --black: #010110;
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
 main {
@@ -15,12 +21,18 @@ main {
   overflow: hidden;
   gap: 2rem;
   padding: var(--margin-and-offset);
-  background-color: #010110;
+  background-color: var(--black);
   color: var(--off-white);
+}
+
+#title, #job-title {
+  font-family: "Zilla Slab", serif;
 }
 
 #title {
   font-size: 6rem;
+  font-family: "Zilla Slab", serif;
+  font-weight: 300;
 }
 
 main > * {
@@ -36,24 +48,14 @@ main > * {
   position: relative;
   cursor: pointer;
   color: var(--off-white);
-
-  &::after {
-    --offset: 50%;
-    content: '';
-    display: block;
-    position: absolute;
-    top: 0;
-    left: var(--offset);
-    width: 0;
-    height: 100%;
-    border-bottom: 1px solid var(--off-white);
-    transition: 300ms;
-    transform: translateX(calc(var(--offset) * -1));
-    padding-bottom: 2px;
+  transition: 300ms;
+  
+  &:hover {
+    color: var(--off-white-tint);
   }
 
-  &:hover::after {
-    width: 100%;
+  &.selected:hover {
+    color: var(--gold);
   }
 }
 
@@ -61,24 +63,28 @@ main > * {
   margin-bottom: 0;
 }
 
-#back-button {
+.back-button {
   --font-size: 1rem;
+  --transition-time: 200ms;
   background: none;
   font-style: inherit;
   border: none;
   cursor: pointer;
   font-size: var(--font-size);
   color: var(--off-white);
-  
-  /* &::before {
-    content: '';
-    width: var(--font-size);
-    height: var(--font-size);
-    display: inline-block;
-    background-color: black;
-    clip-path: path("M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z");
-    transform: rotate(-90deg);
-  } */
+  transition: var(--transition-time);
+
+  .chevron {
+    transition: var(--transition-time);
+  }
+
+  &:hover {
+    color: var(--off-white-tint);
+
+    .chevron {
+      fill: var(--off-white-tint);
+    }
+  }
 }
 
 #content {
@@ -87,7 +93,8 @@ main > * {
 }
 
 .project-title {
-  display: inline-block
+  display: inline-block;
+  font-family: "Zilla Slab", sans-serif;
 }
 
 .chevron {
@@ -96,6 +103,7 @@ main > * {
   height: var(--height-and-width);
   width: var(--height-and-width);
   margin: 0 1.5rem;
+  fill: var(--off-white);
 }
 
 .chevron.flipped {
@@ -108,6 +116,7 @@ main > * {
 }
 
 .project-description {
+  font-family: "Zilla Slab", serif;
   font-style: italic;
   text-align: center;
 }
@@ -128,4 +137,14 @@ ul {
 
 li {
   margin-bottom: 0.5rem;
+}
+
+#job-title {
+  font-size: 3rem;
+  font-weight: 600;
+  color: var(--gold);
+}
+
+.selected {
+  color: var(--gold);
 }

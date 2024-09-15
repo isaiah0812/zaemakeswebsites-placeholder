@@ -6,7 +6,6 @@ const Chevron = ({ flipped, size, margin }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 512 512"
-    fill="#f5f4f0"
     className={`chevron${flipped ? ' flipped' : ''}`}
     style={{ height: size, width: size, margin: `0 ${margin}`}}
   >
@@ -19,7 +18,7 @@ const Chevron = ({ flipped, size, margin }) => (
 function BackButton({ onClick }) {
   return (
     <>
-      <button id="back-button" onClick={onClick}><Chevron flipped size="0.75rem" margin="0.25rem" />Back</button>
+      <button className="back-button" onClick={onClick}><Chevron flipped size="0.75rem" margin="0.25rem" />Back</button>
       <br />
     </>
   )
@@ -141,18 +140,19 @@ function App() {
 
   return (
     <main>
-      <h1 id="title">
-        Isaiah Bullard:
-        <br />
-        {jobTitles[jobTitle]}
-      </h1>
+      <div id="title-section">
+        <h1 id="title">
+          Isaiah Bullard
+        </h1>
+        <h2 id="job-title">{jobTitles[jobTitle]}</h2>
+      </div>
       <div id="content">
         <div id="menu">
           {selected && <BackButton onClick={() => setSelected(undefined)} />}
 
           {menuItems.map((item, ndx) =>
             <>
-              {(!selected || selected[0] === item[0]) && (<button className="section-button" key={item[0]} onClick={() => setSelected(item)}>{item[0]}</button>)}
+              {(!selected || selected[0] === item[0]) && (<button className={`section-button${selected && selected[0] === item[0] ? ' selected' : ''}`} key={item[0]} onClick={() => setSelected(item)}>{item[0]}</button>)}
               {((ndx !== menuItems.length - 1 && !selected) && <br />)}
             </>
           )}
