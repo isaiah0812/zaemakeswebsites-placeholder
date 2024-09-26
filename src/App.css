@@ -148,3 +148,30 @@ li {
 .selected {
   color: var(--gold);
 }
+
+.project-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#call-button {
+  background: none;
+  border: none;
+  color: var(--off-white);
+  cursor: pointer;
+  font-size: 1.25rem;
+  width: max-content;
+  transition: 300ms;
+
+  &:hover {
+    color: var(--off-white-tint);
+  }
+}
+
+#contact-container {
+  font-size: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+}

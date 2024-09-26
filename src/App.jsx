@@ -26,7 +26,7 @@ function BackButton({ onClick }) {
 
 function Project({ project }) {
   return (
-    <div>
+    <div className="project-container">
       <div className="project-header"><h2 className="project-title">{project.title}</h2> | {project.urls.map((url, ndx) => (
         <span>
           <a href={url[1]}>{url[0]}</a>{ndx !== project.urls.length - 1 && " | "}
@@ -85,15 +85,15 @@ function Contact() {
     return () => window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ').focus();
   }
   return (
-    <div>
-      Email: <a href="mailto:zae@zaemakeswebsites.com">zae@zaemakeswebsites.com</a>
-      <br />
+    <div id="contact-container">
+      <span>Email: <a href="mailto:zae@zaemakeswebsites.com">zae@zaemakeswebsites.com</a></span>
+      {/* <br /> */}
       {rolling ? (
         <>
           <a href="tel:+15122419507">(512) 241-9507</a>
           <iframe width="420" height="345" src="http://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" frameborder="0" allowfullscreen></iframe>
         </>
-      ) : <button onClick={ra}>{callText}</button>}
+      ) : <button id="call-button" onClick={ra}>{callText}</button>}
     </div>
   )
 }
