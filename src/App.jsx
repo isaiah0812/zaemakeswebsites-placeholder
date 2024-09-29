@@ -2,18 +2,20 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import projects from './projects.json';
 
-const Chevron = ({ flipped, size, margin }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 512 512"
-    className={`chevron${flipped ? ' flipped' : ''}`}
-    style={{ height: size, width: size, margin: `0 ${margin}`}}
-  >
-    {/* <!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. */}
-    <path
-      d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z" />
-  </svg>
-)
+const Chevron = ({ flipped, size, margin, menu, closing }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512"
+      className={`chevron${flipped ? ' flipped' : ''}${menu ? ' menu' : ''}${closing ? ' closing' : ''}`}
+      style={{ height: size, width: size, ...(margin ? { margin: `0 ${margin}` } : {}) }}
+    >
+      {/* <!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. */}
+      <path
+        d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z" />
+    </svg>
+  )
+}
 
 function BackButton({ onClick }) {
   return (
@@ -87,7 +89,6 @@ function Contact() {
   return (
     <div id="contact-container">
       <span>Email: <a href="mailto:zae@zaemakeswebsites.com">zae@zaemakeswebsites.com</a></span>
-      {/* <br /> */}
       {rolling ? (
         <>
           <a href="tel:+15122419507">(512) 241-9507</a>
@@ -100,6 +101,7 @@ function Contact() {
 
 function App() {
   const [selected, setSelected] = useState(undefined)
+  const [closing, setClosing] = useState(false);
 
   const menuItems = [
     ['Projects', <Projects />],
@@ -138,6 +140,14 @@ function App() {
     return () => clearInterval(titleScroll);
   }, []);
 
+  const handleBack = () => {
+    setClosing(true);
+    setTimeout(() => {
+      setSelected(undefined);
+      setClosing(false);
+    }, 1000)
+  }
+
   return (
     <main>
       <div id="title-section">
@@ -148,8 +158,7 @@ function App() {
       </div>
       <div id="content">
         <div id="menu">
-          {selected && <BackButton onClick={() => setSelected(undefined)} />}
-
+          {selected && <BackButton onClick={handleBack} />}
           {menuItems.map((item, ndx) =>
             <>
               {(!selected || selected[0] === item[0]) && (<button className={`section-button${selected && selected[0] === item[0] ? ' selected' : ''}`} key={item[0]} onClick={() => setSelected(item)}>{item[0]}</button>)}
@@ -159,8 +168,10 @@ function App() {
         </div>
         {selected && (
           <>
-            <Chevron size="1.5rem" margin="1.5rem" />
-            {selected[1]}
+            <Chevron size="1.5rem" menu closing={closing} />
+            <div id="page-container" className={`${closing ? 'closing' : ''}`}>
+              {selected[1]}
+            </div>
           </>
         )}
       </div>

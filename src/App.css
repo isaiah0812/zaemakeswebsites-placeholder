@@ -73,6 +73,7 @@ main > * {
   font-size: var(--font-size);
   color: var(--off-white);
   transition: var(--transition-time);
+  transform: translateX(calc(-1 * var(--font-size)));
 
   .chevron {
     transition: var(--transition-time);
@@ -98,16 +99,22 @@ main > * {
 }
 
 .chevron {
-  --height-and-width: 1.5rem;
   transform: rotate(90deg);
-  height: var(--height-and-width);
-  width: var(--height-and-width);
   margin: 0 1.5rem;
   fill: var(--off-white);
 }
 
 .chevron.flipped {
   transform: rotate(-90deg);
+}
+
+.chevron.menu {
+  animation: chevron-appear 1s;
+}
+
+.chevron.menu.closing {
+  transform: rotate(90deg) translateY(100%);
+  transition: all 1s;
 }
 
 .project-divide {
@@ -124,7 +131,7 @@ main > * {
 .project-header {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   gap: 0.5rem;
 }
@@ -174,4 +181,39 @@ li {
   display: flex;
   flex-direction: column;
   row-gap: 0.5rem;
+}
+
+@keyframes chevron-appear {
+  from {
+    transform: rotate(90deg) translateY(100%);
+    opacity: 0
+  }
+
+  to {
+    transform: rotate(90deg) translateY(0);
+    opacity: 1
+  }
+}
+
+#page-container {
+  animation: page-appear 2s ease;
+}
+
+@keyframes page-appear {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.closing {
+  opacity: 0;
+  transition: opacity 1s;
 }
