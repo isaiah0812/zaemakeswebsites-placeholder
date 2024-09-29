@@ -118,7 +118,7 @@ function App() {
     'Dawg',
     'Jack of A Few Trades',
     'Batman',
-    'AI, except Human',
+    'AI\'s worst nightmare',
     'Vance Refrigeration',
     'Lightning Bender (Technically)',
     'Isaiah Bullard'
