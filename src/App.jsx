@@ -17,14 +17,7 @@ const Chevron = ({ flipped, size, margin, menu, closing }) => {
   )
 }
 
-function BackButton({ onClick }) {
-  return (
-    <>
-      <button className="back-button" onClick={onClick}><Chevron flipped size="0.75rem" margin="0.25rem" />Back</button>
-      <br />
-    </>
-  )
-}
+const BackButton = ({ onClick }) => <button className="back-button" onClick={onClick}><Chevron flipped size="0.75rem" margin="0.25rem" />Back</button>
 
 function Project({ project }) {
   return (
@@ -49,12 +42,11 @@ function Projects() {
   const [selected, setSelected] = useState(undefined);
 
   return (
-    <div>
+    <div id="project-container">
       {selected && <BackButton onClick={() => setSelected(undefined)} />}
       {projects.map((project, ndx) => 
         <>
           {(!selected) && <button className="section-button" onClick={() => setSelected(project.title)}>{project.title}</button>}
-          {(ndx !== projects.length - 1 && !selected) && <br />}
           {(selected === project.title) && <Project project={project} />}
         </>
       )}
@@ -160,10 +152,9 @@ function App() {
         <div id="menu">
           {selected && <BackButton onClick={handleBack} />}
           {menuItems.map((item, ndx) =>
-            <>
-              {(!selected || selected[0] === item[0]) && (<button className={`section-button${selected && selected[0] === item[0] ? ' selected' : ''}`} key={item[0]} onClick={() => setSelected(item)}>{item[0]}</button>)}
-              {((ndx !== menuItems.length - 1 && !selected) && <br />)}
-            </>
+            (!selected || selected[0] === item[0]) && (
+              <button className={`section-button${selected && selected[0] === item[0] ? ' selected' : ''}`} key={ndx} onClick={() => setSelected(item)}>{item[0]}</button>
+            )
           )}
         </div>
         {selected && (
