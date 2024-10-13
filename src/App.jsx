@@ -22,7 +22,7 @@ const BackButton = ({ onClick }) => <button className="back-button" onClick={onC
 function Project({ project }) {
   return (
     <div className="project-container">
-      <div className="project-header"><h2 className="project-title">{project.title}</h2> | {project.urls.map((url, ndx) => (
+      <div className="project-header"><h2 className="project-title">{project.title}</h2> {window.innerWidth > 700 && "| "}{project.urls.map((url, ndx) => (
         <span>
           <a href={url[1]}>{url[0]}</a>{ndx !== project.urls.length - 1 && " | "}
         </span>
@@ -33,7 +33,7 @@ function Project({ project }) {
       <ul>
         {project.tasks.map(task => <li>{task}</li>)}
       </ul>
-      {project.demos.map((demo, ndx) => <img src={demo} />)}
+      {project.demos.map((demo, ndx) => <img className="project-demo" src={demo} />)}
     </div>
   )
 }
@@ -84,7 +84,9 @@ function Contact() {
       {rolling ? (
         <>
           <a href="tel:+15122419507">(512) 241-9507</a>
-          <iframe width="420" height="345" src="http://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" frameborder="0" allowfullscreen></iframe>
+          <div id="roll-container">
+            <iframe id="roll" src="http://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" frameborder="0" allowfullscreen></iframe>
+          </div>
         </>
       ) : <button id="call-button" onClick={ra}>{callText}</button>}
     </div>
