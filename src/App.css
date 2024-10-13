@@ -130,10 +130,10 @@ main > * {
 
 .project-header {
   display: flex;
-  justify-content: space-between;
-  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+  text-align: center;
 }
 
 ul {
@@ -197,6 +197,21 @@ li {
 
 #page-container {
   animation: page-appear 2s ease;
+  width: 100%;
+}
+
+a {
+  color: var(--off-white);
+  text-decoration: none;
+  transition: 300ms;
+
+  &:hover, &:visited:hover {
+    color: var(--off-white-tint);
+  }
+
+  &:visited {
+    color: var(--off-white);
+  }
 }
 
 @keyframes page-appear {
@@ -216,4 +231,132 @@ li {
 .closing {
   opacity: 0;
   transition: opacity 1s;
+}
+
+#menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#project-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#roll-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%;
+}
+
+#roll {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.project-demo {
+  width: 100%;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 800px) {
+  main {
+    align-content: flex-start;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+  }
+
+  main > * {
+    width: 100%;
+  }
+
+  #menu {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .section-button {
+    margin: 0;
+  }
+
+  .chevron {
+    margin: 1.5rem 0;
+  }
+
+  .chevron.menu {
+    transform: rotate(180deg);
+  }
+
+  .chevron.menu.closing {
+    transform: rotate(180deg) translateY(100%);
+  }
+
+  #content {
+    flex-direction: column;
+  }
+
+  #project-container {
+    align-items: center;
+  }
+
+  @keyframes chevron-appear {
+    from {
+      transform: rotate(180deg) translateY(100%);
+      opacity: 0
+    }
+  
+    to {
+      transform: rotate(180deg) translateY(0);
+      opacity: 1
+    }
+  }
+
+  #contact-container {
+    align-items: center;
+  }
+}
+
+@media (max-width: 700px) {
+  #title {
+    font-size: 3rem;
+  }
+
+  #job-title {
+    font-size: 1.5rem;
+  }
+
+  #contact-container {
+    --font-size: 1rem;
+    font-size: var(--font-size);
+
+    #call-button {
+      font-size: var(--font-size);
+    }
+  }
+
+  .section-button {
+    font-size: 1.25rem;
+  }
+
+  main {
+    --margin-and-offset: 1.5rem;
+  }
+
+  #page-container {
+    width: 100%;
+  }
+
+  .project-container {
+    width: 100%;
+  }
 }

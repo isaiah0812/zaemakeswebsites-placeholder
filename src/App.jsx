@@ -17,19 +17,12 @@ const Chevron = ({ flipped, size, margin, menu, closing }) => {
   )
 }
 
-function BackButton({ onClick }) {
-  return (
-    <>
-      <button className="back-button" onClick={onClick}><Chevron flipped size="0.75rem" margin="0.25rem" />Back</button>
-      <br />
-    </>
-  )
-}
+const BackButton = ({ onClick }) => <button className="back-button" onClick={onClick}><Chevron flipped size="0.75rem" margin="0.25rem" />Back</button>
 
 function Project({ project }) {
   return (
     <div className="project-container">
-      <div className="project-header"><h2 className="project-title">{project.title}</h2> | {project.urls.map((url, ndx) => (
+      <div className="project-header"><h2 className="project-title">{project.title}</h2> {project.urls.map((url, ndx) => (
         <span>
           <a href={url[1]}>{url[0]}</a>{ndx !== project.urls.length - 1 && " | "}
         </span>
@@ -40,7 +33,7 @@ function Project({ project }) {
       <ul>
         {project.tasks.map(task => <li>{task}</li>)}
       </ul>
-      {project.demos.map((demo, ndx) => <img src={demo} />)}
+      {project.demos.map((demo, ndx) => <img className="project-demo" src={demo} />)}
     </div>
   )
 }
@@ -49,12 +42,11 @@ function Projects() {
   const [selected, setSelected] = useState(undefined);
 
   return (
-    <div>
+    <div id="project-container">
       {selected && <BackButton onClick={() => setSelected(undefined)} />}
       {projects.map((project, ndx) => 
         <>
           {(!selected) && <button className="section-button" onClick={() => setSelected(project.title)}>{project.title}</button>}
-          {(ndx !== projects.length - 1 && !selected) && <br />}
           {(selected === project.title) && <Project project={project} />}
         </>
       )}
@@ -88,11 +80,14 @@ function Contact() {
   }
   return (
     <div id="contact-container">
-      <span>Email: <a href="mailto:zae@zaemakeswebsites.com">zae@zaemakeswebsites.com</a></span>
+      <a href="/Resume.pdf" download>Click to download my Resume!</a>
+      <a href="mailto:zae@zaemakeswebsites.com">zae@zaemakeswebsites.com</a>
       {rolling ? (
         <>
           <a href="tel:+15122419507">(512) 241-9507</a>
-          <iframe width="420" height="345" src="http://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" frameborder="0" allowfullscreen></iframe>
+          <div id="roll-container">
+            <iframe id="roll" src="http://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" frameborder="0" allowfullscreen></iframe>
+          </div>
         </>
       ) : <button id="call-button" onClick={ra}>{callText}</button>}
     </div>
@@ -160,10 +155,9 @@ function App() {
         <div id="menu">
           {selected && <BackButton onClick={handleBack} />}
           {menuItems.map((item, ndx) =>
-            <>
-              {(!selected || selected[0] === item[0]) && (<button className={`section-button${selected && selected[0] === item[0] ? ' selected' : ''}`} key={item[0]} onClick={() => setSelected(item)}>{item[0]}</button>)}
-              {((ndx !== menuItems.length - 1 && !selected) && <br />)}
-            </>
+            (!selected || selected[0] === item[0]) && (
+              <button className={`section-button${selected && selected[0] === item[0] ? ' selected' : ''}`} key={ndx} onClick={() => setSelected(item)}>{item[0]}</button>
+            )
           )}
         </div>
         {selected && (
