@@ -130,10 +130,10 @@ main > * {
 
 .project-header {
   display: flex;
-  justify-content: space-between;
-  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+  text-align: center;
 }
 
 ul {
@@ -197,6 +197,21 @@ li {
 
 #page-container {
   animation: page-appear 2s ease;
+  width: 100%;
+}
+
+a {
+  color: var(--off-white);
+  text-decoration: none;
+  transition: 300ms;
+
+  &:hover, &:visited:hover {
+    color: var(--off-white-tint);
+  }
+
+  &:visited {
+    color: var(--off-white);
+  }
 }
 
 @keyframes page-appear {
@@ -343,11 +358,5 @@ li {
 
   .project-container {
     width: 100%;
-  }
-
-  .project-header {
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: initial;
   }
 }

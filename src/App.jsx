@@ -22,7 +22,7 @@ const BackButton = ({ onClick }) => <button className="back-button" onClick={onC
 function Project({ project }) {
   return (
     <div className="project-container">
-      <div className="project-header"><h2 className="project-title">{project.title}</h2> {window.innerWidth > 700 && "| "}{project.urls.map((url, ndx) => (
+      <div className="project-header"><h2 className="project-title">{project.title}</h2> {project.urls.map((url, ndx) => (
         <span>
           <a href={url[1]}>{url[0]}</a>{ndx !== project.urls.length - 1 && " | "}
         </span>
@@ -80,7 +80,8 @@ function Contact() {
   }
   return (
     <div id="contact-container">
-      <span>Email: <a href="mailto:zae@zaemakeswebsites.com">zae@zaemakeswebsites.com</a></span>
+      <a href="/Resume.pdf" download>Click to download my Resume!</a>
+      <a href="mailto:zae@zaemakeswebsites.com">zae@zaemakeswebsites.com</a>
       {rolling ? (
         <>
           <a href="tel:+15122419507">(512) 241-9507</a>
