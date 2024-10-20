@@ -23,6 +23,7 @@ main {
   padding: var(--margin-and-offset);
   background-color: var(--black);
   color: var(--off-white);
+  position: relative;
 }
 
 #title, #job-title {
@@ -264,6 +265,63 @@ a {
 
 .project-demo {
   width: 100%;
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: max-content;
+  overflow: visible;
+}
+
+.social-button {
+  height: 1.25rem;
+  width: max-content;
+  margin: 0.5rem;
+  fill: var(--off-white);
+  transition: fill 300ms;
+
+  &:hover {
+    fill: var(--off-white-tint);
+  }
+}
+
+#music-button {
+  position: relative;
+
+  &:hover {
+    fill: var(--gold) !important;
+  }
+}
+
+#music-link {
+  position: relative;
+}
+
+#music-link:hover::before {
+  content: "Wrong site, huh? 🤫😉";
+  background-color: rgba(5, 19, 54, 0.85);
+  color: var(--gold);
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translate(-50%, 0);
+  text-wrap: nowrap;
+  animation: tooltip-appear 1s;
+  padding: 0.4rem;
+  border-radius: 8px;
+}
+
+@keyframes tooltip-appear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 /* Mobile Responsiveness */
